@@ -4,12 +4,12 @@ import { galleryItems } from "./gallery-items.js";
 // console.log(galleryItems);
 
 const galleryRef = document.querySelector(".gallery");
-galleryRef.insertAdjacentHTML("beforeend", itemOfNewGallery(galleryItems));
+galleryRef.insertAdjacentHTML("beforeend", itemOfGallery(galleryItems));
 
 galleryRef.addEventListener("click", openModalWindow);
 
-function itemOfNewGallery(ref) {
-  return ref
+function itemOfGallery(arr) {
+  return arr
     .map(({ preview, original, description }) => {
       return `<li class="gallery__item">
          <a class="gallery__link" href="large-image.jpg">
@@ -40,9 +40,9 @@ function openModalWindow(e) {
   document.addEventListener("keydown", (e) => closeModalWindow(e, fullImage));
 }
 
-function closeModalWindow(e, modalWinow) {
+function closeModalWindow(e, modalWindow) {
   if (e.code === "Escape") {
-    modalWinow.close();
+    modalWindow.close();
     e.preventDefault;
     document.removeEventListener("keydown", closeModalWindow);
   }
